@@ -15,3 +15,12 @@ func ExtractVideoID(link string) (string, error) {
 	}
 	return matches[1], nil
 }
+
+func ExtractPlaylistID(link string) (string, error) {
+	re := regexp.MustCompile(`(?:list=)([^&\n]+)`)
+	matches := re.FindStringSubmatch(link)
+	if len(matches) < 2 {
+		return "", errors.New("ID da playlist não encontrado")
+	}
+	return matches[1], nil
+}
