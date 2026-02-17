@@ -107,7 +107,7 @@ func logErrors(stderr io.ReadCloser) {
 }
 
 func parseProgress(line string) float64 {
-	re := regexp.MustCompile([(\d+\.\d+)%](cci:1://file:///C:/Users/Robson/source/app-youtube/src/app/api/extract/route.ts:2:0-80:1))
+	re := regexp.MustCompile(`(\d+\.\d+)%`)
 	matches := re.FindStringSubmatch(line)
 	if len(matches) > 1 {
 		progress, err := strconv.ParseFloat(matches[1], 64)
